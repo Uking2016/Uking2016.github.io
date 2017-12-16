@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>uking2016的个人博客</title>
+  <title>postcss 2017/12/16 | uking2016的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="uking2016的个人博客">
-<meta property="og:url" content="http://uking2016.github.io/index.html">
+  <meta name="description" content="less转成acss，做支付宝小程序再也不用手动改样式啦（postcss,extract-text-webpack-plugin）接到当前项目转成支付宝小程序的需求，你有没有这样做过？把原来的项目的样式（less，或者其他）拷贝到acss（支付宝小程序的样式），然后按支付宝小程序的规则把px转成rpx其实这个拷贝修改的过程，可以变成自动转换的哦extract-text-webpack-plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postcss 2017&#x2F;12&#x2F;16">
+<meta property="og:url" content="http://uking2016.github.io/2017/12/16/postcss-2017-12-16/index.html">
 <meta property="og:site_name" content="uking2016的个人博客">
+<meta property="og:description" content="less转成acss，做支付宝小程序再也不用手动改样式啦（postcss,extract-text-webpack-plugin）接到当前项目转成支付宝小程序的需求，你有没有这样做过？把原来的项目的样式（less，或者其他）拷贝到acss（支付宝小程序的样式），然后按支付宝小程序的规则把px转成rpx其实这个拷贝修改的过程，可以变成自动转换的哦extract-text-webpack-plugin">
+<meta property="og:updated_time" content="2017-12-16T11:31:58.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="uking2016的个人博客">
+<meta name="twitter:title" content="postcss 2017&#x2F;12&#x2F;16">
+<meta name="twitter:description" content="less转成acss，做支付宝小程序再也不用手动改样式啦（postcss,extract-text-webpack-plugin）接到当前项目转成支付宝小程序的需求，你有没有这样做过？把原来的项目的样式（less，或者其他）拷贝到acss（支付宝小程序的样式），然后按支付宝小程序的规则把px转成rpx其实这个拷贝修改的过程，可以变成自动转换的哦extract-text-webpack-plugin">
   
     <link rel="alternate" href="/atom.xml" title="uking2016的个人博客" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-postcss-2017-12-16" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-postcss-2017-12-16" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/16/postcss-2017-12-16/" class="article-date">
   <time datetime="2017-12-16T11:31:13.000Z" itemprop="datePublished">2017-12-16</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/postcss-2017-12-16/">postcss 2017/12/16</a>
+    <h1 class="article-title" itemprop="name">
+      postcss 2017/12/16
     </h1>
   
 
@@ -98,191 +100,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/node/" class="article-date">
-  <time datetime="2017-11-14T06:47:05.267Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/node/">node前后端分离</a>
-    </h1>
+    <a href="/2017/11/14/node/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">node前后端分离</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>node前后端分离</p>
-<p>思考：前后端不分离有哪些缺点？</p>
-<p>前后端分离的定义<br>就是前端和后端的分开嘛</p>
-<p>前后端分离<br>啊，怎么分开，那我直接cx把前端代码弄走吗？</p>
-<p>咦，请求不了了，<br>XMLHttpRequest cannot load <a href="https://s103.ggwan.com/mainlinghitv2/css/trends.css" target="_blank" rel="external">https://s103.ggwan.com/mainlinghitv2/css/trends.css</a>. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘null’ is therefore not allowed access. The response had HTTP status code 404.<br>无法加载<a href="https://s103.ggwan.com/mainlinghitv2/css/trends.cs" target="_blank" rel="external">https://s103.ggwan.com/mainlinghitv2/css/trends.cs</a> XMLHttpRequest。在所请求的资源上没有“访问控制允许源站点”报头。因此，不允许源站点“null”访问。响应具有HTTP状态代码404。</p>
-<p>我们看看发送ajax的时候浏览器干了什么</p>
-<p>站点null想访问<a href="https://s103.ggwan.com站点上的内容，结果报错。啊？为啥不能访问？" target="_blank" rel="external">https://s103.ggwan.com站点上的内容，结果报错。啊？为啥不能访问？</a><br>因为浏览器的同源策略</p>
-<p>浏览器的同源策略</p>
-<p>跨域处理的方法<br>1.CORS</p>
-<p>跨域的处理方法<br>2.JSONP</p>
-<p>跨域的处理方法<br>3.websocket<br>不受同源策略限制</p>
-<p>跨域的处理方法<br>用一个代理服务器访问后端服务（就是避免让浏览器去请求不同的域，让我们的服务器去请求，就不存在同源策略啦）</p>
-<p>node作为中间层实现跨域<br>接下来，我们一起用node（express）来创建一个服务器吧<br>var app = express();<br>App.listen(8080);<br>这个app就是我们的代理服务器啦，用它可以管理我们的静态资源（就是我们的前端代码啊，html,css,js）<br>app.use(express.static(path.join(__dirname, ‘/‘)));<br>就是这一句话！！就是表示静态资源就在当前目录，然后express就会自己去找index.html啦</p>
-<p>结合webapack<br>A: Webpack除了用来打包，还能在开发环境下作为一个node的服务器（webpack-dev-server）哦。<br>B:  哇，那你的意思是，webpack-dev-server就可以跨域访问资源咯？<br>A: 没错噢，只要简单的配置啦，请看代码<br>在webpack.config.js里，我们这样配置</p>
-<pre><code>devServer:{
-          historyApiFallback:true,
-          hot:true,
-          inline:true,
-          progress:true,//报错无法识别，删除后也能正常刷新
-          proxy: {//用devserver作跨域
-            &apos;/mainlinghitv2/css/trends.css&apos;: {
-              target: &apos;https://s103.ggwan.com&apos;,//真正要请求的域名
-              changeOrigin: true
-            }
-          }
-      }
-</code></pre><p>B: 就是说，我们在开发的时候，可以直接用webpack来调试接口就不用在本地搭建php(/java)的环境咯？<br>A: 是的哦<br>B: /哭笑 那为什么还要用node作中间层？<br>A: 因为webpack-dev-server是只能在开发环境运行的哦，webpack-dev-server生成的包并没有放在你的真实目录中,而是放在了内存中，就是说，webpack-dev-server不会生成html,js这些资源的目录里面，而这些静态文件在生产环境中是必须的，看下图<br>开发环境下</p>
-<p>B: 也就是说，用了webpack-dev-server我们只是在开发环境下实现了前后端分离<br>A: 是的，生产环境下，我们其实也是同域访问的情况<br>B：就是说，上线的时候，又出现了前后端在一起的情况</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/node/" data-id="cjb99jda900044sqzoekeyjyc" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-article-title2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/article-title2/" class="article-date">
-  <time datetime="2017-11-14T06:44:00.000Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/article-title2/">article title2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/article-title2/" data-id="cjb99jd9w00004sqzkpgcu5zx" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-article-title" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/article-title/" class="article-date">
-  <time datetime="2017-11-14T06:31:49.000Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/article-title/">article title</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/article-title/" data-id="cjb99jda600024sqzhj1b69qs" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/hello-world/" class="article-date">
-  <time datetime="2017-11-14T06:22:08.674Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/hello-world/" data-id="cjb99jda700034sqzka4kgr3p" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
