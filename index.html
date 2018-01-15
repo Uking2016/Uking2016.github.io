@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://uking2016.github.io"></form>
@@ -60,6 +60,44 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-广度优先搜索-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/15/广度优先搜索-1/" class="article-date">
+  <time datetime="2018-01-15T13:18:04.000Z" itemprop="datePublished">2018-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/15/广度优先搜索-1/">广度优先搜索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ACM图论算法入门-广度优先搜索"><a href="#ACM图论算法入门-广度优先搜索" class="headerlink" title="ACM图论算法入门-广度优先搜索"></a><strong>ACM图论算法入门-广度优先搜索</strong></h1><h4 id="小时候有没有玩过连连看的游戏？或者类俄罗斯方块之类的游戏？"><a href="#小时候有没有玩过连连看的游戏？或者类俄罗斯方块之类的游戏？" class="headerlink" title="小时候有没有玩过连连看的游戏？或者类俄罗斯方块之类的游戏？"></a>小时候有没有玩过连连看的游戏？或者类俄罗斯方块之类的游戏？</h4><h4 id="怎么实现连通块的消除？（连通块是指颜色相同，在图中连通的方格）"><a href="#怎么实现连通块的消除？（连通块是指颜色相同，在图中连通的方格）" class="headerlink" title="怎么实现连通块的消除？（连通块是指颜色相同，在图中连通的方格）"></a>怎么实现连通块的消除？（连通块是指颜色相同，在图中连通的方格）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;  </span><br><span class="line">        &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;      </span><br><span class="line">        &lt;title&gt;test&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            #chart&#123;</span><br><span class="line">                width: 500px;</span><br><span class="line">                height:500px;</span><br><span class="line">            &#125;</span><br><span class="line">            table&#123;</span><br><span class="line">                width: 500px;</span><br><span class="line">                height:500px;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">            var dir = [[1,0],[-1,0],[0,-1],[0,1],[-1,1],[-1,-1],[1,1],[1,-1]];//方向数组,分别表示上、下、左、右、左上、左下、右上、右下</span><br><span class="line">            //g_search是广度优先搜索</span><br><span class="line">            //d_search是深度优先搜索(下次再写)</span><br><span class="line">            function g_search(tu,w,h,i,j)&#123;//tu是一个二维矩阵,width是矩阵的单位长度，h是单位高度,其中tu[0][0]=1表示图中（0,0）这个点是第1号颜色,i,j是起始点</span><br><span class="line">                var next_i,</span><br><span class="line">                    next_j,</span><br><span class="line">                    nextPoint=&#123;&#125;,</span><br><span class="line">                    nowPoint=&#123;&#125;,//现在要处理的点</span><br><span class="line">                    flag = [],</span><br><span class="line">                    isInQueue = [],//记录在进过队列的点</span><br><span class="line">                    queue = [];//start_i是宽度的遍历索引,start_j是高度的遍历索引，其中i&lt;w ,j&lt;h,flag是标志图中每个点是否被访问的数组,queue是队列数组</span><br><span class="line">                //初始化标记数组为未访问</span><br><span class="line">                for(var x = 0;x &lt; w; x++)&#123;</span><br><span class="line">                    flag[x] = [];</span><br><span class="line">                    for(var y = 0 ; y &lt; h ; y++)&#123;</span><br><span class="line">                        flag[x][y] = false;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                var startPoint = &#123;</span><br><span class="line">                    x: i,</span><br><span class="line">                    y: j,</span><br><span class="line">                    color : tu[i][j]</span><br><span class="line">                &#125;;</span><br><span class="line">                </span><br><span class="line">                flag[i][j] = true;//初始化开始点是被访问的</span><br><span class="line">                queue.push(startPoint); //队列里面初始化一个点</span><br><span class="line">                isInQueue.push(startPoint);</span><br><span class="line">                while(queue.length !== 0)&#123;//队列为空则退出</span><br><span class="line">                   nowPoint= queue.pop();</span><br><span class="line">                   i = nowPoint.x;</span><br><span class="line">                   j = nowPoint.y;</span><br><span class="line">                   for(var ii=0; ii&lt; dir.length; ii++)&#123;</span><br><span class="line">                       next_i = i + dir[ii][0];</span><br><span class="line">                       next_j = j+ dir[ii][1];</span><br><span class="line">                       </span><br><span class="line">                       if(isLegal(next_i,next_j,w,h))&#123;//如果相邻点（方向数组里面的八个相邻点，点不超出图的边界）颜色相同，则放进队列</span><br><span class="line">                            if(!flag[next_i][next_j])&#123;</span><br><span class="line">                                flag[next_i][next_j] = true;</span><br><span class="line">                                if( tu[i][j] === tu[next_i][next_j])&#123;</span><br><span class="line">                                    nextPoint = &#123;</span><br><span class="line">                                        x: next_i,</span><br><span class="line">                                        y: next_j,</span><br><span class="line">                                        color: tu[next_i][next_j]</span><br><span class="line">                                    &#125;</span><br><span class="line">                                    isInQueue.push(nextPoint);</span><br><span class="line">                                    queue.push(nextPoint);</span><br><span class="line">                                &#125;   </span><br><span class="line">                            &#125;   </span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                for(var i=0;i&lt;isInQueue.length;i++)&#123;//如果在队列里面，说明是一个联通块，则变颜色</span><br><span class="line">                    var obj = isInQueue[i];</span><br><span class="line">                    tu[obj.x][obj.y] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">                return tu;</span><br><span class="line">            &#125;</span><br><span class="line">            function isLegal(x,y,w,h)&#123;</span><br><span class="line">                if(x&gt;=0 &amp;&amp; x&lt;w &amp;&amp; y&gt;=0 &amp;&amp; y&lt;h)&#123;</span><br><span class="line">                    return true</span><br><span class="line">                &#125;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br><span class="line">           //渲染成图</span><br><span class="line">           function createTu(tuArr,id)&#123;//生成图,id是插入的dom的id</span><br><span class="line">              var colorArr = [&apos;#333333&apos;,&apos;#FFFAFA&apos;,&apos;#FFF68F&apos;,&apos;#FFEFD5&apos;,&apos;#FFE4E1&apos;,&apos;#FFDEAD&apos;,&apos;#FFC1C1&apos;];//初始化六种颜色</span><br><span class="line">              var html = &quot;&lt;table&gt;&quot;</span><br><span class="line">              for(var i=0;i&lt;tuArr.length;i++)&#123;</span><br><span class="line">                html+=&quot;&lt;tr&gt;&quot;;</span><br><span class="line">                for(var j=0;j&lt;tuArr[i].length;j++)&#123;</span><br><span class="line">                    html+=&quot;&lt;td style=&apos;background-color:&quot;+colorArr[tuArr[i][j]]+&quot;&apos; x=&apos;&quot;+i+&quot;&apos; y=&apos;&quot;+ j +&quot;&apos;&gt;&lt;/td&gt;&quot;</span><br><span class="line">                &#125;</span><br><span class="line">                html+=&quot;&lt;/tr&gt;&quot;;</span><br><span class="line">              &#125;</span><br><span class="line">              html+= &quot;&lt;/table&gt;&quot;</span><br><span class="line">              var chart = document.getElementById(&quot;chart&quot;);</span><br><span class="line">              chart.innerHTML = html;</span><br><span class="line">              chart.onclick = clickHandler;</span><br><span class="line">           &#125;</span><br><span class="line">           function clickHandler(e)&#123;//事件代理</span><br><span class="line">                var tar = e.target||e.srcElement;</span><br><span class="line">                var x = tar.getAttribute(&apos;x&apos;);</span><br><span class="line">                var y = tar.getAttribute(&apos;y&apos;);</span><br><span class="line">                x = !!x ? parseInt(x): null;</span><br><span class="line">                y = !!y ? parseInt(y): null;</span><br><span class="line">                if(x!=null &amp;&amp; y!=null)&#123;</span><br><span class="line">                    createTu(g_search(testArr,testArr.length,testArr[0].length,x,y));</span><br><span class="line">                &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">            //测试数据</span><br><span class="line">            var testArr = [[1,1,2,3,1],[1,3,5,1,1],[2,4,2,2,1]];</span><br><span class="line">           createTu(testArr,&quot;chart&quot;)</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="项目地址："><a href="#项目地址：" class="headerlink" title="项目地址："></a>项目地址：</h4><p><a href="https://uking2016.github.io/g_search_demo/g_search_demo/test.html">https://uking2016.github.io/g_search_demo/g_search_demo/test.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://uking2016.github.io/2018/01/15/广度优先搜索-1/" data-id="cjcg8jvit000524qz2sblikj5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-postcss-2017-12-16" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -92,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/12/16/postcss-2017-12-16/" data-id="cjb99jda300014sqz4b5riff9" class="article-share-link">Partager</a>
+      <a data-url="http://uking2016.github.io/2017/12/16/postcss-2017-12-16/" data-id="cjcg8jvip000324qzqyxeyidb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/node/" data-id="cjb99jda900044sqzoekeyjyc" class="article-share-link">Partager</a>
+      <a data-url="http://uking2016.github.io/2017/11/14/node/" data-id="cjcg8jvir000424qzccv7ukb4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/article-title2/" data-id="cjb99jd9w00004sqzkpgcu5zx" class="article-share-link">Partager</a>
+      <a data-url="http://uking2016.github.io/2017/11/14/article-title2/" data-id="cjcg8jvik000124qz89crvouz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/article-title/" data-id="cjb99jda600024sqzhj1b69qs" class="article-share-link">Partager</a>
+      <a data-url="http://uking2016.github.io/2017/11/14/article-title/" data-id="cjcg8jvid000024qz9iflzks0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://uking2016.github.io/2017/11/14/hello-world/" data-id="cjb99jda700034sqzka4kgr3p" class="article-share-link">Partager</a>
+      <a data-url="http://uking2016.github.io/2017/11/14/hello-world/" data-id="cjcg8jvin000224qzbdon9t8f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +338,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
   </div>
 
@@ -308,9 +346,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/15/广度优先搜索-1/">广度优先搜索</a>
+          </li>
         
           <li>
             <a href="/2017/12/16/postcss-2017-12-16/">postcss 2017/12/16</a>
@@ -328,10 +370,6 @@
             <a href="/2017/11/14/article-title/">article title</a>
           </li>
         
-          <li>
-            <a href="/2017/11/14/hello-world/">Hello World</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -344,8 +382,8 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 陈宇晴<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2018 陈宇晴<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
